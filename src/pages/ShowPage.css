@@ -1,0 +1,75 @@
+.showpage{
+    max-width: 1000px;
+    margin-inline: auto;
+    padding-inline: min( 3em, 4vmin);
+}
+.showbanner{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.showimage{
+    width: 350px;
+    max-width: 60%;
+    height: 500px;
+    background-color: rgb(23, 23, 23);
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.showheadings{
+    display: flex;
+    flex-direction: column;
+    padding-inline: 2em;
+    padding-block: 2em;
+    align-self: stretch;
+    background-color: rgb(19, 19, 19);
+    gap:3em;
+}
+.showtitle{
+    font-size: 1.5rem;
+}
+.showbookbutton{
+    color: white;
+    border: 2px solid white;
+    border-radius: 5px;
+    text-decoration: none;
+    width: fit-content;
+    padding-inline: 1em;
+}
+.showbookbutton:hover{
+    background-color: white;
+    color: black;
+}
+
+.showgenres{
+    display: flex;
+    flex-wrap: wrap;
+    gap:1em;
+}
+.showgenre{
+    color: rgb(187, 187, 93);
+}
+.showruntime, .showstatus, .showtype{
+    color: rgb(176, 172, 155);
+}
+.showcontent{
+    background-color: rgb(24, 24, 24);
+    padding: 2em 3em;
+    max-width: 900px;
+}
+.showcontenttitle{
+    margin-bottom: 1em;
+    font-size: 1.3rem;
+}
+
+@media screen and (max-width: 480px) {
+    .showbanner{
+        flex-direction: column;
+    }
+    .showimage
+    {
+        max-width: 100%;
+    }
+}

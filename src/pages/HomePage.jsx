@@ -6,6 +6,8 @@ import MovieCard from '../components/MovieCard';
 //To do
 
 //Display fetch error
+//Handle no search results
+//Pagination
 export default function HomePage({ searchQuery }) {
     const [moviesFetchResult, setMoviesFetchResult] = useState([]);
     useEffect(() => {
@@ -14,7 +16,6 @@ export default function HomePage({ searchQuery }) {
         async function fetchMovies() {
             try {
                 let response;
-                console.log(searchQuery);
                 if(searchQuery)
                 {
                     response = await axios.get(`https://api.tvmaze.com/search/shows?q=${searchQuery}`, { signal: abortfetchmovies.signal });
@@ -42,7 +43,6 @@ export default function HomePage({ searchQuery }) {
             abortfetchmovies.abort();
         }
     }, [searchQuery]);
-    console.log(moviesFetchResult);
     return (
         <div>
             <div className="movieslist">

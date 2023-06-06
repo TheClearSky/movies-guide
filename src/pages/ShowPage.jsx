@@ -1,10 +1,88 @@
-import React from 'react';
+import React, { useState,useEffect } from 'react';
 import "./ShowPage.css";
-import { useParams } from 'react-router-dom';
+import { NavLink, useParams } from 'react-router-dom';
+import axios from 'axios';
 
+//To do
+
+//Display fetch error
 export default function ShowPage() {
     const {id:movieid}=useParams();
+    const [movieFetchResult, setMovieFetchResult] = useState({});
+    useEffect(() => {
+        //to cancel the request incase the component unmounts
+        const abortfetchmovies = new AbortController();
+        async function fetchMovies() {
+            try {
+                let response = await axios.get(`https://api.tvmaze.com/shows/${movieid}`, { signal: abortfetchmovies.signal });
+                setMovieFetchResult(response.data);
+            } catch (error) {
+                if (axios.isCancel(error)) {
+                    //request was cancelled, do nothing
+                }
+                else
+                {
+
+                }
+            }
+        }
+        fetchMovies();
+
+        return () => {
+            //if component has unmounted, cancel the fetch
+            abortfetchmovies.abort();
+        }
+    }, []);
+    const {name,language,image,genres,rating,runtime,status,type,summary}=movieFetchResult;
   return (
-    <div>ShowPage:{movieid}</div>
+    <div className="showpage">
+        <div className="showbanner">
+            {(image?.original) ? <div className="showimage" style={{backgroundImage:`url(${image?.original})`}} /> :
+            <div className="showimage">No image available</div>}
+            <div className="showheadings">
+                <div>
+                    <div className="showtitle">{name}</div>
+                    <div className="showlanguage">{language}</div>
+                </div>
+                <div>
+                    {genres &&
+                    <div className="showgenres">
+                        {genres.map((genre)=>
+                        <span key={genre} className="showgenre">{genre}</span>
+                        )}
+                    </div>
+                    }
+                    {rating?.average &&
+                    <div className="showstars">
+                        {rating.average}/10
+                    </div>}
+                </div>
+                <div>
+                    {runtime &&
+                    <div className="showruntime">
+                        {runtime}m
+                    </div>
+                    }
+                    {status &&
+                    <div className="showstatus">
+                        {status}
+                    </div>
+                    }
+                    {type &&
+                    <div className="showtype">
+                        Type:{type}
+                    </div>
+                    }
+                </div>
+                <NavLink className="showbookbutton" to={`/show/${movieid}/book`}>Book</NavLink>
+            </div>
+            
+        </div>
+        {summary &&
+        <div className="showcontent">
+            <div className="showcontenttitle">Summary</div>
+            <div className="showcontentbody" dangerouslySetInnerHTML={{__html:summary}} />
+        </div>}
+    </div>
   )
 }
