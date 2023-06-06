@@ -18,7 +18,7 @@ export default function MovieCard({movieid,name,imageurl,stars,genres}) {
                         )}
                     </div>
                 }
-                <NavLink className='moviesummarybutton' to={`/show/${movieid}`}>Open</NavLink>
+                {movieid&&<NavLink className='moviesummarybutton' to={`/show/${movieid}`}>Open</NavLink>}
             </div>
             <div className="rightpane">
                 {stars &&
