@@ -1,0 +1,16 @@
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    padding: 2em 3em;
+    align-items: center;
+}
+.navtitles{
+    display: flex;
+    flex-direction: column;
+}
+.navtitle{
+    font-size: 1.5rem;
+}
+.navsubtitle{
+    color: rgb(176, 171, 147);
+}

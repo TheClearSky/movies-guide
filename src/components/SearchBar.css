@@ -1,0 +1,8 @@
+.searchbar{
+    font-size: 1.2rem;
+    background-color: rgb(79, 79, 68);
+    color: white;
+    border: 0px;
+    padding: 0.5em 1em;
+    border-radius: 15px;
+}
