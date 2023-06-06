@@ -1,16 +1,27 @@
-.navbar{
+.navbar {
     display: flex;
     justify-content: space-between;
-    padding: 2em 3em;
+    padding-block: 2em;
+    padding-inline: min(3em, 5vw);
     align-items: center;
 }
-.navtitles{
+
+.navtitles {
     display: flex;
     flex-direction: column;
 }
-.navtitle{
+
+.navtitle {
     font-size: 1.5rem;
 }
-.navsubtitle{
+
+.navsubtitle {
     color: rgb(176, 171, 147);
+}
+
+@media screen and (max-width: 480px) {
+    .navbar{
+        flex-direction: column;
+        gap:1em;
+    }
 }
