@@ -7,6 +7,7 @@ import BookPage from './pages/BookPage';
 import { useState } from 'react';
 import SuccessFullyBookedPage from './pages/SuccessFullyBookedPage';
 import BookedMoviesPage from './pages/BookedMoviesPage';
+import NotFoundPage from './pages/NotFoundPage';
 
 function App() {
   const [searchBarValue,setSearchBarValue]=useState("");
@@ -19,6 +20,7 @@ function App() {
             <Route path="/show/:id" element={<ShowPage/>} />
             <Route path="/booked" element={<SuccessFullyBookedPage/>} />
             <Route path="/booklist" element={<BookedMoviesPage/>} />
+            <Route path="*" element={<NotFoundPage/>} />
           </Route>
         </Routes>
     </>

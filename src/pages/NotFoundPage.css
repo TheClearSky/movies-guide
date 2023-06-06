@@ -1,0 +1,25 @@
+.notfoundpage{
+    background-color: rgb(56, 56, 56);
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    width: fit-content;
+    padding: 1em 3em;
+    gap:1em;
+    align-items: center;
+}
+.notfoundpage div{
+    width: fit-content;
+}
+.notfoundpagebutton{
+    color: white;
+    border: 2px solid white;
+    border-radius: 5px;
+    text-decoration: none;
+    width: fit-content;
+    padding-inline: 1em;
+}
+.notfoundpagebutton:hover{
+    background-color: white;
+    color: black;
+}
