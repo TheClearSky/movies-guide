@@ -1,0 +1,33 @@
+.successfullybooked{
+    background-color: rgba(0, 0, 0, 0.745);
+    border-radius: 5px;
+    margin: auto;
+    padding-inline: min( 3em, 4vw);
+    padding-block: 2em;
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    align-items: center;
+    gap:3em;
+}
+.successfullybookedtitle{
+    font-size: 2rem;
+    width: fit-content;
+}
+.successfullybookedbuttons{
+    display: flex;
+    gap: 1em;
+    flex-wrap: wrap;
+}
+.successfullybookedbutton{
+    color: white;
+    border: 2px solid white;
+    border-radius: 5px;
+    text-decoration: none;
+    width: fit-content;
+    padding-inline: 1em;
+}
+.successfullybookedbutton:hover{
+    background-color: white;
+    color: black;
+}

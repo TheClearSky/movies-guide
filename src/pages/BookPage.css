@@ -1,0 +1,44 @@
+.bookpage{
+    margin-inline: auto;
+    max-width: 500px;
+    padding-inline: min( 3em, 4vw);
+    padding-block: 2em;
+    background-color: rgb(18, 18, 18);
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+}
+.bookpagetitle{
+    font-size: 2rem;
+}
+.bookpageruntime{
+    color: rgb(151, 151, 151);
+}
+.bookpage label{
+    display: block;
+    margin-block: 0.2em;
+    font-size: 1.2rem;
+}
+.bookpage input{
+    background-color: rgb(44, 44, 44);
+    color: white;
+    font-size: 1.2rem;
+    border: 0px;
+    padding-inline: 0.5em;
+    padding-block: 0.2em;
+    margin-left: 1em;
+    border-radius: 5px;
+}
+.bookpagebutton{
+    color: white;
+    border: 2px solid white;
+    border-radius: 5px;
+    text-decoration: none;
+    width: fit-content;
+    padding-inline: 1em;
+    padding-block: 0.2em;
+}
+.bookpagebutton:hover{
+    background-color: white;
+    color: black;
+}
