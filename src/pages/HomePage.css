@@ -1,0 +1,8 @@
+.movieslist{
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1000px;
+    gap:2em;
+    margin-inline: auto;
+    justify-content: center;
+}

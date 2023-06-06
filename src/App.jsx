@@ -12,7 +12,7 @@ function App() {
     <>
         <Routes>
           <Route element={<Navbar searchBarValue={searchBarValue} setSearchBarValue={setSearchBarValue}/>}>
-            <Route path="/" element={<HomePage/>} />
+            <Route path="/" element={<HomePage searchQuery={searchBarValue}/>} />
             <Route path="/show/:id/book" element={<BookPage/>} />
             <Route path="/show/:id" element={<ShowPage/>} />
           </Route>

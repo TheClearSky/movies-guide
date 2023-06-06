@@ -1,0 +1,64 @@
+.moviecard{
+    width: 200px;
+    height: 375px;
+    background-color: rgb(23, 23, 23);
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+}
+.moviecardimage{
+    width: 200px;
+    height: 300px;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.moviedetails{
+    display: flex;
+    justify-content: space-between;
+    padding-inline: 1em;
+    padding-bottom: 0.5em;
+    padding-top: 0.2em;
+    background-color: rgb(23, 23, 23);
+    z-index: 1;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+.moviename{
+    font-size: 0.8rem;
+}
+.leftpane{
+    display: flex;
+    flex-direction: column;
+    gap:0.2em;
+}
+.genres{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3em;
+    width: fit-content;
+}
+.genre{
+    color: rgb(187, 187, 93);
+    font-size: 0.6rem;
+}
+.stars{
+    font-size: 0.8rem;
+}
+.moviesummarybutton{
+    font-size: 0.7rem;
+    margin-top: 0.3em;
+    padding: 0.1em 0.5em;
+    width: fit-content;
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
+    border-radius: 5px;
+    text-decoration: none;
+}
+.moviesummarybutton:hover{
+    background-color: white;
+    color: black;
+}
