@@ -1,0 +1,19 @@
+.bookedmovies{
+    display: flex;
+    flex-direction: column;
+    gap:3em;
+    align-items: center;
+}
+.bookedmoviestitle{
+    font-size: 2rem;
+}
+.bookedmovieslist{
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1000px;
+    gap:2em;
+    margin-inline: auto;
+    justify-content: center;
+    padding-inline: 2em;
+    padding-bottom: 2em;
+}
