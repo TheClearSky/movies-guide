@@ -13,6 +13,8 @@
 
 .navtitle {
     font-size: 1.5rem;
+    color: white;
+    text-decoration: none;
 }
 
 .navsubtitle {
