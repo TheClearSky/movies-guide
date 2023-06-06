@@ -12,7 +12,7 @@ export default function ShowPage() {
     useEffect(() => {
         //to cancel the request incase the component unmounts
         const abortfetchmovies = new AbortController();
-        async function fetchMovies() {
+        async function fetchMovie() {
             try {
                 let response = await axios.get(`https://api.tvmaze.com/shows/${movieid}`, { signal: abortfetchmovies.signal });
                 setMovieFetchResult(response.data);
@@ -26,7 +26,7 @@ export default function ShowPage() {
                 }
             }
         }
-        fetchMovies();
+        fetchMovie();
 
         return () => {
             //if component has unmounted, cancel the fetch
