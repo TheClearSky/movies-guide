@@ -61,7 +61,7 @@ export default function BookedMoviesPage() {
             }
             </div>
         </>:
-        <div className="bookedmovieslist">No results</div>}
+        <div className="bookedmovieslist">You haven't booked any movies</div>}
         {(fetchedMovies.length>pagesize)&&
         <Pages pageNumber={pageNumber} setPageNumber={setPageNumber} pageSize={pagesize} fetchedArray={fetchedMovies}/>}
     </div>
