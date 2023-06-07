@@ -8,3 +8,26 @@
     padding-inline: 2em;
     padding-bottom: 2em;
 }
+.pages{
+    display: flex;
+    gap:2em;
+    margin-inline: auto;
+    margin-bottom: 2em;
+    width: fit-content;
+}
+.previouspage, .pagenumber, .nextpage{
+    background-color: rgb(23, 23, 23);
+    padding-inline: 1.5em;
+    padding-block: 0.2em;
+    border-radius: 4px;
+    cursor: pointer;
+    user-select: none;
+}
+.gotobooked{
+    margin: auto;
+    width: fit-content;
+    color: rgb(190, 190, 145);
+}
+.gotobookedbutton{
+    color: rgb(190, 190, 145);
+}
