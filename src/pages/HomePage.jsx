@@ -5,15 +5,15 @@ import MovieCard from '../components/MovieCard';
 import { NavLink } from 'react-router-dom';
 import Pages from '../components/Pages';
 
-//To do
 
-//Display fetch error
 let pagesize=20;
 export default function HomePage({ searchQuery }) {
     const [moviesFetchResult, setMoviesFetchResult] = useState([]);
+    const [errorMessage,setErrorMessage]=useState(null);
     const [pageNumber,setPageNumber]=useState(1);
     useEffect(() => {
         //to cancel the request incase the component unmounts
+        setErrorMessage(null);
         const abortfetchmovies = new AbortController();
         async function fetchMovies() {
             setPageNumber(1);
@@ -35,7 +35,7 @@ export default function HomePage({ searchQuery }) {
                 }
                 else
                 {
-
+                    setErrorMessage(error.message);
                 }
             }
         }
@@ -48,6 +48,9 @@ export default function HomePage({ searchQuery }) {
     }, [searchQuery]);
     return (
         <div>
+            {errorMessage&&
+            <div style={{"color":"red","textAlign":"center"}}>{errorMessage}</div>}
+
             <div className="gotobooked">Wanna check booked movies? Click <NavLink className="gotobookedbutton" to={"/booklist"}>Booked Movies</NavLink></div>
 
             {(moviesFetchResult.length>0)?

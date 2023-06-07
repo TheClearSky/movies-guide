@@ -4,14 +4,14 @@ import "./ShowPage.css";
 import { NavLink, useParams } from 'react-router-dom';
 import axios from 'axios';
 
-//To do
 
-//Display fetch error
 export default function BookPage() {
     const {id:movieid}=useParams();
     const [movieFetchResult, setMovieFetchResult] = useState({});
+    const [errorMessage,setErrorMessage]=useState(null);
     useEffect(() => {
         //to cancel the request incase the component unmounts
+        setErrorMessage(null);
         const abortfetchmovies = new AbortController();
         async function fetchMovie() {
             try {
@@ -23,7 +23,7 @@ export default function BookPage() {
                 }
                 else
                 {
-
+                    setErrorMessage(error.message);
                 }
             }
         }
@@ -74,6 +74,8 @@ export default function BookPage() {
     const {name,language,runtime}=movieFetchResult;
   return (
     <div className="bookpage">
+        {errorMessage&&
+        <div style={{color:"red"}}>{errorMessage}</div>}
         <div>
             <div className="bookpagetitle">
                 Booking Movie: {name}

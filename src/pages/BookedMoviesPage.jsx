@@ -4,9 +4,7 @@ import axios from 'axios';
 import MovieCard from '../components/MovieCard';
 import Pages from '../components/Pages';
 
-//To do
-//Handle no booked movies
-//Handle fetch errors
+
 let pagesize=10;
 export default function BookedMoviesPage() {
     const [bookList,setBookList]=useState([]);
@@ -19,8 +17,10 @@ export default function BookedMoviesPage() {
     },[]);
 
     const [fetchedMovies,setFetchedMovies]=useState([]);
+    const [errorMessage,setErrorMessage]=useState(null);
     useEffect(() => {
         //to cancel the request incase the component unmounts
+        setErrorMessage(null);
         setFetchedMovies([]);
         const abortfetchmovies = new AbortController();
         async function fetchMovie(id) {
@@ -33,7 +33,7 @@ export default function BookedMoviesPage() {
                 }
                 else
                 {
-
+                    setErrorMessage(error.message);
                 }
             }
         }
@@ -49,6 +49,8 @@ export default function BookedMoviesPage() {
 
   return (
     <div className="bookedmovies">
+        {errorMessage&&
+        <div style={{color:"red"}}>{errorMessage}</div>}
         {(fetchedMovies.length>0)?
         <>
             <div className="bookedmoviestitle">

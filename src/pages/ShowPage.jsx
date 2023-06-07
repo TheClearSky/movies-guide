@@ -3,14 +3,13 @@ import "./ShowPage.css";
 import { NavLink, useParams } from 'react-router-dom';
 import axios from 'axios';
 
-//To do
-
-//Display fetch error
 export default function ShowPage() {
     const {id:movieid}=useParams();
     const [movieFetchResult, setMovieFetchResult] = useState({});
+    const [errorMessage,setErrorMessage]=useState(null);
     useEffect(() => {
         //to cancel the request incase the component unmounts
+        setErrorMessage(null);
         const abortfetchmovies = new AbortController();
         async function fetchMovie() {
             try {
@@ -22,7 +21,7 @@ export default function ShowPage() {
                 }
                 else
                 {
-
+                    setErrorMessage(error.message);
                 }
             }
         }
@@ -36,6 +35,8 @@ export default function ShowPage() {
     const {name,language,image,genres,rating,runtime,status,type,summary}=movieFetchResult;
   return (
     <div className="showpage">
+        {errorMessage&&
+        <div style={{color:"red","textAlign":"center"}}>{errorMessage}</div>}
         <div className="showbanner">
             {(image?.original) ? <div className="showimage" style={{backgroundImage:`url(${image?.original})`}} /> :
             <div className="showimage">No image available</div>}
