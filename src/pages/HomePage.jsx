@@ -3,11 +3,11 @@ import "./HomePage.css";
 import axios from 'axios';
 import MovieCard from '../components/MovieCard';
 import { NavLink } from 'react-router-dom';
+import Pages from '../components/Pages';
 
 //To do
 
 //Display fetch error
-//Handle no search results
 let pagesize=20;
 export default function HomePage({ searchQuery }) {
     const [moviesFetchResult, setMoviesFetchResult] = useState([]);
@@ -46,23 +46,10 @@ export default function HomePage({ searchQuery }) {
             abortfetchmovies.abort();
         }
     }, [searchQuery]);
-    function goToNextPage()
-    {
-        if(pageNumber*pagesize<moviesFetchResult.length)
-        {
-            setPageNumber(prevPageNumber=>prevPageNumber+1);
-        }
-    }
-    function goToPreviousPage()
-    {
-        if(pageNumber>1)
-        {
-            setPageNumber(prevPageNumber=>prevPageNumber-1);
-        }
-    }
     return (
         <div>
             <div className="gotobooked">Wanna check booked movies? Click <NavLink className="gotobookedbutton" to={"/booklist"}>Booked Movies</NavLink></div>
+
             {(moviesFetchResult.length>0)?
             <div className="movieslist">
             {
@@ -71,15 +58,9 @@ export default function HomePage({ searchQuery }) {
             }
             </div>:
             <div className="movieslist">No results</div>}
+
             {(moviesFetchResult.length>pagesize)&&
-            <>
-                <div className="pages">
-                    <div className="previouspage" onClick={goToPreviousPage} >{"<<"}</div>
-                    <div className="pagenumber">Page: {pageNumber}</div>
-                    <div className="nextpage" onClick={goToNextPage} >{">>"}</div>
-                </div>
-            </>
-            }
+            <Pages pageNumber={pageNumber} setPageNumber={setPageNumber} pageSize={pagesize} fetchedArray={moviesFetchResult}/>}
         </div>
     )
 }

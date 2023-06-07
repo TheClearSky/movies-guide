@@ -2,11 +2,12 @@ import React, { useEffect, useState } from 'react';
 import "./BookedMoviesPage.css";
 import axios from 'axios';
 import MovieCard from '../components/MovieCard';
+import Pages from '../components/Pages';
 
 //To do
 //Handle no booked movies
 //Handle fetch errors
-//Pagination
+let pagesize=10;
 export default function BookedMoviesPage() {
     const [bookList,setBookList]=useState([]);
     useEffect(()=>{
@@ -44,17 +45,25 @@ export default function BookedMoviesPage() {
         }
     }, [bookList]);
 
+    const [pageNumber,setPageNumber]=useState(1);
+
   return (
     <div className="bookedmovies">
-        <div className="bookedmoviestitle">
-            The movies you have booked!!
-        </div>
-        <div className="bookedmovieslist">
-        {
-            fetchedMovies.slice(0,10).map(({id,name,image,genres,rating})=>
-                <MovieCard key={id} movieid={id} name={name} imageurl={image?.medium} stars={rating?.average} genres={genres} />)
-        }
-        </div>
+        {(fetchedMovies.length>0)?
+        <>
+            <div className="bookedmoviestitle">
+                The movies you have booked!!
+            </div>
+            <div className="bookedmovieslist">
+            {
+                fetchedMovies.slice((pageNumber-1)*pagesize,pageNumber*pagesize).map(({id,name,image,genres,rating})=>
+                    <MovieCard key={id} movieid={id} name={name} imageurl={image?.medium} stars={rating?.average} genres={genres} />)
+            }
+            </div>
+        </>:
+        <div className="bookedmovieslist">No results</div>}
+        {(fetchedMovies.length>pagesize)&&
+        <Pages pageNumber={pageNumber} setPageNumber={setPageNumber} pageSize={pagesize} fetchedArray={fetchedMovies}/>}
     </div>
   )
 }
