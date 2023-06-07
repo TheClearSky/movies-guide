@@ -46,7 +46,6 @@ export default function HomePage({ searchQuery }) {
             abortfetchmovies.abort();
         }
     }, [searchQuery]);
-    console.log(moviesFetchResult);
     function goToNextPage()
     {
         if(pageNumber*pagesize<moviesFetchResult.length)
@@ -64,13 +63,15 @@ export default function HomePage({ searchQuery }) {
     return (
         <div>
             <div className="gotobooked">Wanna check booked movies? Click <NavLink className="gotobookedbutton" to={"/booklist"}>Booked Movies</NavLink></div>
+            {(moviesFetchResult.length>0)?
             <div className="movieslist">
             {
-                moviesFetchResult.slice((pageNumber-1)*20,pageNumber*20).map(({id,name,image,genres,rating})=>
+                moviesFetchResult.slice((pageNumber-1)*pagesize,pageNumber*pagesize).map(({id,name,image,genres,rating})=>
                     <MovieCard key={id} movieid={id} name={name} imageurl={image?.medium} stars={rating?.average} genres={genres} />)
             }
-            </div>
-            {(moviesFetchResult.length>20)&&
+            </div>:
+            <div className="movieslist">No results</div>}
+            {(moviesFetchResult.length>pagesize)&&
             <>
                 <div className="pages">
                     <div className="previouspage" onClick={goToPreviousPage} >{"<<"}</div>
